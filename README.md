@@ -1,9 +1,8 @@
 # Introduction to Ruby Class Inheritance 
 
-## Understanding class inheritance in Ruby
 Like most [object-oriented programming languages](https://en.wikipedia.org/wiki/Object-oriented_programming), Ruby has classes used for the purpose of [data abstraction](https://www.defit.org/data-abstraction/), [data encapsulation](https://en.wikipedia.org/wiki/Object-oriented_programming#Encapsulation), [polymorphism](https://www.webopedia.com/TERM/P/polymorphism.html), and [inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)). But out of the entire four, our focus is on class inheritance in object orirnted Ruby.
 
-## What is a class?
+### What is a class?
 A [class](https://study.com/academy/lesson/oop-object-oriented-programming-objects-classes-interfaces.html) is a means of creating objects which have similar attributes. It means that for classes to be created, there have to be objects with shared or related characteristics who need to be severally and distinctly classified.
 
 Creating a class in Ruby is as simple as defining a _class_ keyword and a class name to identify it with. The end keyword comes last to indicate the end of a particular class.
@@ -15,8 +14,7 @@ end
 ```
 Classes are created to have [single responsibilities](https://en.wikipedia.org/wiki/Single_responsibility_principle). In order for a class to create objects to populate itself, it has to implement some functionalities that are based on the attributes(behaviour and state) of the objects to be created. These functionalities can be achieved through functions, better known as methods. Therefore, the class should have methods that produce results to achieve a particular purpose.
 
-## Functions/Methods
-
+### Functions/Methods
 In object-oriented programming, there are typically two types of functions: [class methods and instance methods](https://dev.to/adamlombard/ruby-class-methods-vs-instance-methods-4aje). In Ruby, functions are generally referred to as methods.Consequently, functions that belong to classes and those that exist outside the class are both known as methods.
 
 Methods are vital to the class because all expressions of its state and behaviour are encoded in the method’s procedures and data variables. A method determines what attributes an object should have and the way it should behave. A method can have zero or more arguments depending on it’s definition. Ruby’s class method will not be featured in this article, we'll focus on instance methods. This is because the functionality of objects is contained in the instance method logic. Here is a _sample class_ that has an instance method.
@@ -31,8 +29,7 @@ class MyClass
 end
 ```
 
-## Objects / Instances
-
+### Objects / Instances
 An object is an instance of a class whose type is the class it belongs to. That is why they are known either as class objects or class instances. I'll define objects as members of a class who are created at the program's runtime and stored in variables. The behaviour and atributes of member objects must be pre-determined by the class. However, an empty class like the one in our code snippet does not achieve anything. Objects or instances have to be created by a process called instantiation.
 
 To create an object, you have to declare a variable and assign to it the `NameOfClass.new()`. Here is how to create an object for the sample class.
@@ -57,8 +54,7 @@ class MyClass
     var1.an_instance_method()
 ```
 
-## Class Inheritance
-
+### Class Inheritance
 Classes are related to each other when they have similar attributes. If there are obvious similarities in related classes, code repetition will happen.
 
 Inheritance is a concept that takes advantage of the relationship between classes to make specialized versions of classes.
@@ -210,7 +206,6 @@ student.motto # => We are tomorrow's leaders
 ```
 
 ### Invoking Methods from the Super Class
-
 When the super class and the subclass share a method with the same signature, a call to that method by an object of the subclass always overrides the method of the superclass. The way to access the parent's version of the method is to invoke the super keyword.
 
 If there are no parameters in the shared method, when __super__ or __super()__ is invoked, the logic of both methods are executed.
@@ -288,7 +283,6 @@ person.profile("stud001", "Lisa Green")
 **Note:** One way to prevent the arguments of the  subclass' object from being passed to the superclass is by calling __super()__ in it's method. On the other hand, an effective way to impose the arguments of the subclass' object on the superclass is by calling __super()__ with the parameters of the subclass. For example, calling `super(id, name)` in the subclass.
 
 ### Conclusion
-
 Class inheritance is a powerful feature in object oriented programming that prevents your program from having duplicated code. However, it should only be used sparingly when there are features to be shared among objects.
 
 
