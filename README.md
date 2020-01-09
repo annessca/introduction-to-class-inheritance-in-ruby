@@ -15,9 +15,9 @@ end
 Classes are created to have [single responsibilities](https://en.wikipedia.org/wiki/Single_responsibility_principle). In order for a class to create objects to populate itself, it has to implement some functionalities that are based on the attributes(behaviour and state) of the objects to be created. These functionalities can be achieved through functions, better known as methods. Therefore, the class should have methods that produce results to achieve a particular purpose.
 
 ### Functions/Methods
-In object-oriented programming, there are typically two types of functions: [class methods and instance methods](https://dev.to/adamlombard/ruby-class-methods-vs-instance-methods-4aje). In Ruby, functions are generally referred to as methods.Consequently, functions that belong to classes and those that exist outside the class are both known as methods.
+In object-oriented programming, there are typically two types of functions: [class methods and instance methods](https://dev.to/adamlombard/ruby-class-methods-vs-instance-methods-4aje). In Ruby, functions are generally referred to as methods. Consequently, functions that belong to classes and those that exist outside the class are both known as methods.
 
-Methods are vital to the class because all expressions of its state and behaviour are encoded in the method’s procedures and data variables. A method determines what attributes an object should have and the way it should behave. A method can have zero or more arguments depending on it’s definition. Ruby’s class method will not be featured in this article, we'll focus on instance methods. This is because the functionality of objects is contained in the instance method logic. Here is a _sample class_ that has an instance method.
+Methods are vital to the class because all expressions of its state and behaviour are encoded in the method’s procedures and data variables. A method determines what attributes an object should have and the way it should behave. A method can have zero or more arguments depending on it’s definition. Ruby's class method will not be featured in this article, we'll focus on instance methods. This is because the functionality of objects is contained in the instance method logic. Here is a _sample class_ that has an instance method.
 
 ```ruby
 # Creating a class named MyClass
@@ -74,8 +74,8 @@ end
 
 # creating objects
 person = Person.new()
-person.introduction(“Petera”, “supervisor”, “female”)
-# => I am Petera, a female supervisor
+person.introduction(“Petera”, "female", "supervisor")
+# => I am Petera, a female supervisor.
 ```
 
 Now let's create another class `Teacher`, that should inherit from `Person`:
@@ -131,7 +131,7 @@ student.introduction("Jill", "student", "female")
 Although Ruby does not allow a single class to inherit from multiple classes, it offers alternative means for classes to reuse code from multiple objects. This brings in the concept of [Modules and Mixins](https://www.w3resource.com/ruby/ruby-modules-and-mixins.php).
 
 ### Modules and Mixins
-A module is an object that has namespaces for variables, methods, and sometimes classes. It's definition is very similar to that of the class, only that instead of a __class__ keyword, you’ll have the __module__ instead. Let's create a __School__ module in a file __school.rb__.
+A module is an object that has namespaces for variables, methods, and sometimes classes. It's definition is very similar to that of the class, only that instead of a __class__ keyword, you'll have the __module__ instead. Let's create a __School__ module in a file __school.rb__.
 
 ```ruby
 # school.rb
@@ -154,6 +154,12 @@ Classes can inherit any code within a module as a mixin. For this to work, you h
 ```ruby
 $LOAD_PATH << '.'
 require "school"
+
+class Person
+  def introduction(name, designation, gender)
+    puts "I am #{name}, a #{gender} #{designation}." 
+  end
+end
 
 class Teacher < Person
     def portfolio(subject)
@@ -185,7 +191,7 @@ student.population()
 ```
 
 ### Method Overriding
-[Method overriding](https://www.codesdope.com/ruby-more-with-oops/) is a feature in object-oriented programming that allows a subclass to bypass the implementation of a method in its superclass (also known as parent class). To achieve this, the subclass defines a method with the same name as the target method in the superclass, but yields a different or specialized outcome. Whenever an object of the subclass makes a call to that method, the superclass' implementation of the method will be replaced by that of the subclass.
+[Method overriding](https://www.codesdope.com/ruby-more-with-oops/) is a feature in object-oriented programming that allows a subclass to bypass the implementation of a method in its superclass (also known as parent class). To achieve this, the subclass defines a method with the same name as the target method in the superclass, but yields a different or specialized outcome. Whenever an object of the subclass makes a call to that method, the superclass' implementation of the method will be replaced with that of the subclass.
 
 ```ruby
 class Teacher
@@ -197,7 +203,7 @@ end
 class Student < Teacher
     # A method to override the superclass method
     def motto
-        puts "We are tomorrow’s leaders"
+        puts "We are tomorrow's leaders"
     end
 end
 
@@ -266,7 +272,7 @@ class Teacher
 end
 
 class Student < Teacher
-    # calling super()
+    # calling super
     def profile(id, name)
         super
         puts "We are tomorrow's leaders"
